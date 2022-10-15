@@ -1,6 +1,9 @@
+/* header files */
 #include <stdio.h>
 
-/* printout using puts*/
+/* 
+ * printout using puts
+*/
 int main(void)
 {
 	/*output using puts*/
