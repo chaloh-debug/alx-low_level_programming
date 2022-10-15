@@ -1,16 +1,16 @@
 #include <stdio.h>
 /**
- * main  - start point
+ * main- Start point
  *
  * exceptions
  *
- * return 0 (success)
+ * return: 0 (success)
  */
 int main(void)
 {
 	char i;
 
-	for (i = 'a'; i <= 'z';i++)
+	for (i = 'a'; i <= 'z'; i++)
 	{
 		if (i != 'e' && i != 'q')
 		{
