@@ -1,9 +1,6 @@
-/* header files */
 #include <stdio.h>
 
-/* 
- * printout using puts
- */
+/* printout using puts */
 int main(void)
 {
 	puts("\"Programming is like building a multilingual puzzle");
