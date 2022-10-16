@@ -3,7 +3,7 @@
 /**
  * main- Start point
  *
- * nested loop
+ * numbering
  *
  * Return: 0 (Success)
  *
@@ -11,16 +11,13 @@
 
 int main(void)
 {
-	int i, j;
+	int i;
 
 	for (i = '0'; i <= '9'; i++)
 	{
 		putchar(i);
-		for (j = '0'; j <= '9'; j++)
-		{
-			putchar(j);
-			putchar(", ");
-		}
+		putchar(',');
+		putchar(' ');
 	}
 	putchar('\n');
 	return (0);
