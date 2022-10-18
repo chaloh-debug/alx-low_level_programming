@@ -1,6 +1,5 @@
 #include "main.h"
 
-int _putchar(char c);
 /**
  * main- start point
  *
@@ -11,8 +10,6 @@ int _putchar(char c);
  */
 int main(void)
 {
-	c=_putchar;
-	putchar(c);
-	putchar('\n');
+	_putchar(_putchar);
 	return (0);
 }
