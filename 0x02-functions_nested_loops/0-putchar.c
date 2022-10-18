@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <main.h>
 
 /**
  * main- start point
@@ -14,4 +15,6 @@ int main(void)
 
 	a= _putchar;
 	purchar(a);
+	putchar('\n');
+	return (0);
 }
