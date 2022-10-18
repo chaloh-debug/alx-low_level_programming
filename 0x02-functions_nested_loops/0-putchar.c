@@ -10,6 +10,13 @@
  */
 int main(void)
 {
-	_putchar("_putchar");
+	int arr[] = {95, 70, 75, 74, 63, 68, 61, 72};
+	int loop;
+
+	for (loop = 0; loop < 8; loop++)
+	{
+		_putchar(arr[loop]);
+	}
+	_putchar('\n');
 	return (0);
 }
