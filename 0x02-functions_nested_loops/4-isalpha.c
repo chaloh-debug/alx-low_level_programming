@@ -5,7 +5,7 @@
  *
  * @c: ASCII code
  *
- * return: 1 (success). Return 0: the rest
+ * return: 1 if lowercase. Return 0 the rest
  *
  */
 
