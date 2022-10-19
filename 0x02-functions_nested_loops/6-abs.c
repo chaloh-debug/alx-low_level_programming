@@ -3,7 +3,7 @@
 /**
  * _abs - computes the absolute value of an integer
  *
- * @r - integer 
+ * @r: input integer
  *
  * Return: Always 0.
  */
@@ -14,7 +14,7 @@ int _abs(int r)
 	{
 		return (r);
 	}
-	else 
+	else
 	{
 		return (r * -1);
 	}
