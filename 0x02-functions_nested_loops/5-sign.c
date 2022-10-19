@@ -3,7 +3,10 @@
 /**
  * print_sign - prints the sign of a number
  *
- * return: 0 (success)
+ * @n ASCII character
+ *
+ * return: 0 if zero. 1 if greater than zero
+ * -1 if less than zero.
  *
  */
 
@@ -24,4 +27,5 @@ int print_sign(int n)
 		_putchar(45);
 		return (-1);
 	}
+	_putchar('\n');
 }
