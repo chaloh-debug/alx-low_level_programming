@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * main- Start point
+ * Print_alphabet -function
  *
- * function prototypes
+ * print lowercase letters
  *
  * Return 0 (Success)
  */
