@@ -10,7 +10,7 @@
  */
 int main(void)
 {
-	int arr[] = {70, 112, 117, 116, 99, 104, 97, 114};
+	int arr[] = {95, 112, 117, 116, 99, 104, 97, 114};
 	int loop;
 
 	for (loop = 0; loop < 8; loop++)
