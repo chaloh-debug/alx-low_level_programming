@@ -5,7 +5,7 @@
  *
  * @n: ASCII character
  *
- * return: 0 if zero. 1 if greater than zero
+ * Return: 0 if zero. 1 if greater than zero
  * -1 if less than zero.
  *
  */
@@ -24,7 +24,7 @@ int print_sign(int n)
 	}
 	else
 	{
-		_putchar(0);
+		_putchar(48);
 		return (0);
 	}
 	_putchar('\n');
