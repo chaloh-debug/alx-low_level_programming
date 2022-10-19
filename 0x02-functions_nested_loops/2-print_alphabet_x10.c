@@ -1,8 +1,6 @@
 #include "main.h"
 /**
- * main- START
- *
- * nested loop
+ * print_alphabet_x10 - print alphabet 10 times
  *
  * Return: 0 (sucess)
  *
@@ -16,8 +14,8 @@ void print_alphabet_x10(void)
 	{
 		for (j = 97;j <= 122; j++)
 		{
-			putchar(j);
+			_putchar(j);
 		}
-		putchar('\n');
+		_putchar('\n');
 	}
 }
