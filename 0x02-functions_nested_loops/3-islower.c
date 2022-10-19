@@ -3,8 +3,9 @@
 /**
  * _islower - check letter case
  *
- * return 0 (success)
- *
+ * c - parameter to check 
+ * return: 1 (success)
+ * return: 0 (not lowercase)
  */
 
 int _islower(int c)
@@ -14,7 +15,7 @@ int _islower(int c)
 		return (1);
 	}
 	else
-	{	
+	{
 		return (0);
 	}
 }
