@@ -2,6 +2,7 @@
 
 /**
  * main - check for lower or uppercase
+ * @c: input ASCII
  * Return 1 if upper. return 0 if lower.
  */
 
