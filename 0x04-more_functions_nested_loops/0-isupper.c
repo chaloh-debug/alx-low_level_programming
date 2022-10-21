@@ -3,7 +3,7 @@
 /**
  * _isupper - check for lower or uppercase
  * @c: input ASCII
- * Return 1 if upper, return 0 if lower.
+ * Return: 1 if upper, return 0 if lower.
  */
 
 int _isupper(int c)
