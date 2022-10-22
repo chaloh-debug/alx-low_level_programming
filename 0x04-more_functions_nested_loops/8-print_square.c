@@ -2,7 +2,7 @@
 
 /**
  * print_square - print squares using # symbol
- * @size - length of squares
+ * @size: length of squares
  * Return: nill
  */
 
