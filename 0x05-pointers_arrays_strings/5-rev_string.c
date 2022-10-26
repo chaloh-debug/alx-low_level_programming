@@ -19,11 +19,11 @@ void rev_string(char *s)
 	for (j = 0; j < i / 2; j++)
 	{
 		temp = *end;
-		*end =*start;
+		*end = *start;
 		*start = temp;
 
 		start++;
 		end--;
-		return(i);
+		return(j);
 	}
 }
