@@ -13,9 +13,9 @@ void print_array(int *a, int n)
 
 	for (c = 0; c < n; c++)
 	{
-		printf("%d", *(a + i));
+		printf("%d", *(a + c));
 
-		if (i != (n - 1))
+		if (c != (n - 1))
 			printf(", ");
 	}
 	printf("\n");
