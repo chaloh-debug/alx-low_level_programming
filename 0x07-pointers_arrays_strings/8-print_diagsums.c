@@ -5,7 +5,7 @@
  * of a square matrix of integers.
  * @a: input integer
  * @size: size of matrix
- * Return: o
+ * Return: 0
  */
 
 void print_diagsums(int *a, int size)
