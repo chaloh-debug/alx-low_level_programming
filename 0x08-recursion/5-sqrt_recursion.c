@@ -28,5 +28,5 @@ int _sqrt_recursion(int n)
 	if (n < 0)
 		return (-1);
 	else
-		power(n, 0);
+		return (power(n, 0));
 }
