@@ -10,5 +10,6 @@ int _sqrt_recursion(int n);
 int is_prime_number(int n);
 int _putchar(char c);
 int power(int n, int root);
+int division(int n, int i);
 
 #endif
