@@ -1,110 +1,205 @@
-# C - Functions, nested loops
+# 0x02. C - Functions, nested loops
 
-In this project, I learned about nested loops, header files, and variable scope
-in C while practicing declaring and defining my own functions.
+## Resources
 
-## Tests :heavy_check_mark:
+- [Nested while loops](https://www.youtube.com/watch?v=Z3iGeQ1gIss)
+- [C - Functions](https://www.tutorialspoint.com/cprogramming/c_functions.htm)
+- [What is the purpose of a function prototype?](https://www.geeksforgeeks.org/what-is-the-purpose-of-a-function-prototype/)
+- [C - Header Files](https://www.tutorialspoint.com/cprogramming/c_header_files.htm)
+- [C - Books and PDF's](../references) to check out and use as reference.
 
-* [tests](./tests): Folder of test files. Provided by Holberton School.
+## Tasks
 
-## Helper File :raised_hands:
+- **Note** for all these challenges we will not be using global variables and any standard library.
+- We will be using function prototypes that will be included in our header file called, [main.h](./main.h).
+- We are allowed to use the prototype funtion [\_putchar](https://github.com/holbertonschool/_putchar.c/blob/master/_putchar.c).
+- All `*-main.c` files will be located in the [main](./main) directory
 
-* [_putchar.c](./_putchar.c): C function that writes a character to `stdout`.
+---
 
-## Header File :file_folder:
+<details>
+<summary><a href="./0-putchar.c">0. _putchar</a></summary><br>
 
-* [holberton.h](./holberton.h): Header file containing prototypes for all
-functions written in the project.
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/N0SpVLPs/image.png' border='0' alt='image'/></a>
 
-| File                     | Prototype                        |
-| ------------------------ | -------------------------------- |
-| `1-alphabet.c`           | `void print_alphabet(void);`     |
-| `2-print_alphabet_x10.c` | `void print_alphabet_x10(void);` |
-| `3-islower.c`            | `int _islower(int c);`           |
-| `4-isalpha.c`            | `int _isalpha(int c);`           |
-| `5-sign.c`               | `int print_sign(int n);`         |
-| `6-abs.c`                | `int _abs(int);`                 |
-| `7-print_last_digit.c`   | `int print_last_digit(int);`     |
-| `8-24_hours.c`           | `void jack_bauer(void);`         |
-| `9-times_table.c`        | `void times_table(void)`         |
-| `10-add.c`               | `int add(int, int);`             |
-| `11-print_to_98.c`       | `void print_to_98(int n);`       |
-| `100-times_table.c`      | `void print_times_table(int n)`  |
+- Below is the assembly code of the program with comments.
 
-## Tasks :page_with_curl:
+```asm
+<main>: endbr64
+<main+4>: push rbp                                  ; \ standard function
+<main+5>: mov rbp,rsp                               ; / prologue code
+<main+8>: sub rsp,0x20                              ; allocate space for stack array
+<main+12>: mov rax,QWORD PTR fs:0x28                ; stack-guard moved to rax
+<main+21>: mov QWORD PTR [rbp-0x8],rax              ; stack-guard moved to rbp-0x8
+<main+25>: xor eax,eax                              ; zeroing out eax
+<main+27>: movabs rax,0x726168637475705f            ; string '_putchar' moved to rax
+<main+37>: mov QWORD PTR [rbp-0x11],rax             ; string moved to rbp-0x11
+<main+41>: mov BYTE PTR [rbp-0x9],0x0               ; rbp-0x9 = 0
+<main+45>: mov DWORD PTR [rbp-0x18],0x0             ; rbp-0x18 (ch) = 0
+<main+52>: jmp 0x5555555551e0 <main+78>             ; jump
+<main+54>: mov eax,DWORD PTR [rbp-0x18]             ; move rbp-0x18 (ch) to eax
+<main+57>: cdqe                                     ; rax = eax (ch)
+<main+59>: movzx eax,BYTE PTR [rbp+rax*1-0x11]      ; eax = rbp-0x11[ch]
+<main+64>: movsx eax,al                             ; mov 8-bit str chr value to eax
+<main+67>: mov edi,eax                              ; mov str chr to edi (arg1)
+<main+69>: call 0x555555555169 <_putchar>           ; print character
+<main+74>: add DWORD PTR [rbp-0x18],0x1             ; increament rbp-0x18 by 1
+<main+78>: cmp DWORD PTR [rbp-0x18],0x8             ; is ch <= 8
+<main+82>: jle 0x5555555551c8 <main+54>             ; jump
+<main+84>: mov edi,0xa                              ; mov char '\n' to edi (arg1)
+<main+89>: call 0x555555555169 <_putchar>           ; print new line char
+<main+94>: mov eax,0x0                              ; eax = 0
+<main+99>: mov rdx,QWORD PTR [rbp-0x8]              ; mv stack-guard to rdx
+<main+103>: sub rdx,QWORD PTR fs:0x28               ; rdx should be 0
+<main+112>: je 0x555555555209 <main+119>            ; leave function when equal
+<main+114>: call 0x555555555070 <__stack_chk_fail@plt>
+<main+119>: leave
+<main+120>: ret
+```
+- Compile this way: `gcc -Wall -pedantic -Werror -Wextra -std=gnu89 _putchar.c 0-putchar.c -o 0-putchar`
 
-* **0. _putchar**
-  * [0-holberton.c](./0-holberton.c): C program that prints `Holberton`, followed by a
-  new line. Returns 0.
+</details>
 
-* **1. I sometimes suffer from insomnia. And when I can't fall asleep, I play what I call the alphabet game**
-  * [1-alphabet.c](./1-alphabet.c): C function that prints the alphabet in lowercase,
-  followed by a new line.
+<details>
+<summary><a href="./1-alphabet.c">1. I sometimes suffer from insomnia. And when I can't fall asleep, I play what I call the alphabet game</a></summary><br>
 
-* **2. 10 x alphabet**
-  * [2-print_alphabet_x10.c](./2-print_alphabet_x10.c): C function that prints the
-  alphabet in lowercase 10 times, followed by a new line.
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/QN5wDt0t/image.png' border='0' alt='image'/></a>
 
-* **3. islower**
-  * [3-islower.c](./3-islower.c): C function that checks for lowercase characters.
-  Returns `1` if the character is lowercase, `0` otherwise.
+- Compile this way: `gcc -Wall -pedantic -Werror -Wextra -std=gnu89 _putchar.c main/1-main.c 1-alphabet.c -o 1-alphabet`
 
-* **4. isalpha**
-  * [4-isalpha.c](./4-isalpha.c): C function that checks for alphabetic characters.
-  Returns `1` if the character is a letter, `0` otherwise.
+</details>
 
-* **5. Sign**
-  * [5-sign.c](./5-sign.c): C function that prints the sign of a number. Returns:
-    * `1` and prints `+` if the number is greater than zero.
-    * `0` and prints `0` if the number is zero.
-    * `-1` and prints `-` if the number is less than zero.
+<details>
+<summary><a href="./2-print_alphabet_x10.c">2. 10 x alphabet</a></summary><br>
 
-* **6. There is no such thing as absolute value in this world. You can only estimate what a thing is worth to you**
-  * [6-abs.c](./6-abs.c): C function that returns the absolute value of an integer.
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/RVRLc6MN/image.png' border='0' alt='image'/></a>
 
-* **7. There are only 3 colors, 10 digits, and 7 notes; it's what we do with them that's important**
-  * [7-print_last_digit.c](./7-print_last_digit.c): C function that prints the last
-  digit of a number. Returns the value of the last digit.
+- Compile this way: `gcc -Wall -pedantic -Werror -Wextra -std=gnu89 _putchar.c main/2-main.c 2-print_alphabet_x10.c -o 2-alphabet_x10`
 
-* **8. I'm federal agent Jack Bauer, and today is the longest day of my life**
-  * [8-24_hours.c](./8-24_hours.c): C function that prints every minute of the day
-  of Jack Bauer, starting from 00:00 to 23:59.
+</details>
 
-* **9. Learn your times table**
-  * [9-times_table.c](./9-times_table.c): C function that prints the 9 times table,
-  starting with 0.
+<details>
+<summary><a href="./3-islower.c">3. islower</a></summary><br>
 
-* **10. a + b**
-  * [10-add.c](./10-add.c): C function that returns the addition of two integers.
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/mkbf5zKt/image.png' border='0' alt='image'/></a>
 
-* **11. Holberton School, 98 Battery Street, San Francisco CA 94111**
-  * [11-print_to_98.c](./11-print_to_98.c): C function that prints all natural numbers
-  from an input to `98` followed by a new line, as follows:
-    * Numbers are separated by a comma followed by a space.
-    * Numbers are printed in order.
-    * Input represents the number to begin counting from.
-    * `98` is the last number printed.
+- Compile this way: `gcc -Wall -pedantic -Werror -Wextra -std=gnu89 _putchar.c main/3-main.c 3-islower.c -o 3-islower`
 
-* **12. The World looks like a multiplication-table, or a mathematical equation, which, turn it how you will, balances itself**
-  * [100-times_table.c](./100-times_table.c): C function that prints the times table of
-  an input value, starting with 0:
-    * If input is greater than `15` or less than `0`, function prints nothing.
+</details>
 
-* **13. Nature made the natural numbers; All else is the work of women**
-  * [101-natural.c](./101-natural.c): C program that computes and prints the sum of
-  all multiples of `3` or `5` below `1024` (excluded).
+<details>
+<summary><a href="./4-isalpha.c">4. isalpha</a></summary><br>
 
-* **14. In computer class, the first assignment was to write a program to print the first 100 Fibonacci numbers. Instead, I wrote a program that would steal passwords of students. My teacher gave me an A**
-  * [102-fibonacci.c](./102-fibonacci.c): C program that prints the first 50
-  Fibonacci numbers, starting with `1` and `2`, followed by a new line.
-  Numbers are separated by a comma followed by a space.
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/bwvFCG9F/image.png' border='0' alt='image'/></a>
 
-* **15. Even Liber Abbaci**
-  * [103-fibonacci.c](./103-fibonacci.c): C program that prints the sum of even-valued
-  Fibonacci numbers not exceeding 4,000,000, followed by a new line.
+- Compile this way: `gcc -Wall -pedantic -Werror -Wextra -std=gnu89 _putchar.c main/4-main.c 4-isalpha.c -o 4-isalpha`
 
-* **16. In computer class, the first assignment was to write a program to print the first 100 Fibonacci numbers. Instead, I wrote a program that would steal passwords of students. My teacher gave me an A+**
-  * [104-fibonacci.c](./104-fibonacci.c): C program that prints the first 98 Fibonacci
-  numbers, starting with `1` and `2`, followed by a new line, without using `long long`,
-  `malloc`, pointers, arrays, structures, or any library besides the standard.
-  Numbers are separated by a comma followed by a space.
+</details>
+
+<details>
+<summary><a href="./5-sign.c">5. Sign</a></summary><br>
+
+<a href='https://postimg.cc/SnQQHhYB' target='_blank'><img src='https://i.postimg.cc/MpVcMZ6p/image.png' border='0' alt='image'/></a>
+
+- Compile this way: `gcc -Wall -pedantic -Werror -Wextra -std=gnu89 _putchar.c main/5-main.c 5-sign.c -o 5-sign`
+
+</details>
+
+<details>
+<summary><a href="./6-abs.c">6. There is no such thing as absolute value in this world. You can only estimate what a thing is worth to you</a></summary><br>
+
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/NMryvRNb/image.png' border='0' alt='image'/></a>
+
+- Compile this way: `gcc -Wall -pedantic -Werror -Wextra -std=gnu89 _putchar.c main/6-main.c 6-abs.c -o 6-abs`
+
+</details>
+
+<details>
+<summary><a href="./7-print_last_digit.c">7. There are only 3 colors, 10 digits, and 7 notes; it's what we do with them that's important</a></summary><br>
+
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/tC5wPW10/image.png' border='0' alt='image'/></a>
+
+- Compile this way: `gcc -Wall -pedantic -Werror -Wextra -std=gnu89 _putchar.c main/7-main.c 7-print_last_digit.c -o 7-last_digit`
+
+</details>
+
+<details>
+<summary><a href="./8-24_hours.c">8. I'm federal agent Jack Bauer, and today is the longest day of my life</a></summary><br>
+
+<a href='https://postimg.cc/S2X4H6Vq' target='_blank'><img src='https://i.postimg.cc/bJgvDLtG/image.png' border='0' alt='image'/></a>
+
+- Compile this way: `gcc -Wall -pedantic -Werror -Wextra -std=gnu89 _putchar.c main/8-main.c 8-24_hours.c -o 8-24`
+
+</details>
+
+<details>
+<summary><a href="./9-times_table.c">9. Learn your times table</a></summary><br>
+
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/43jbx1Vq/image.png' border='0' alt='image'/></a>
+
+- Compile this way: `gcc -Wall -pedantic -Werror -Wextra -std=gnu89 _putchar.c main/9-main.c 9-times_table.c -o 9-times_table`
+
+</details>
+
+<details>
+<summary><a href="./10-add.c">10. a+b</a></summary><br>
+
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/7LsDGmVH/image.png' border='0' alt='image'/></a>
+
+- Compile this way: `gcc -Wall -pedantic -Werror -Wextra -std=gnu89 _putchar.c main/10-main.c 10-add.c -o 10-add`
+
+</details>
+
+<details>
+<summary><a href="./11-print_to_98.c">11. 98 Battery Street, the OG</a></summary><br>
+
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/CMsVcXxM/image.png' border='0' alt='image'/></a>
+
+- Compile this way: `gcc -Wall -pedantic -Werror -Wextra -std=gnu89 _putchar.c main/11-main.c 11-print_to_98.c -o 11-98`
+
+</details>
+
+<details>
+<summary><a href="./100-times_table.c">12. The World looks like a multiplication-table, or a mathematical equation, which, turn it how you will, balances itself</a></summary><br>
+
+<a href='https://postimg.cc/wts1FBF3' target='_blank'><img src='https://i.postimg.cc/8CZLpJ6d/image.png' border='0' alt='image'/></a>
+
+- Compile this way: `gcc -Wall -pedantic -Werror -Wextra -std=gnu89 _putchar.c main/100-main.c 100-times_table.c -o 100-times_table`
+
+</details>
+
+<details>
+<summary><a href="./101-natural.c">13. Nature made the natural numbers; All else is the work of women</a></summary><br>
+
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/XJbz9n6q/image.png' border='0' alt='image'/></a>
+
+- Compile this way: `gcc -Wall -pedantic -Werror -Wextra -std=gnu89 101-natural.c -o 101-natural`
+
+</details>
+
+<details>
+<summary><a href="./102-fibonacci.c">14. In computer class, the first assignment was to write a program to print the first 100 Fibonacci numbers. Instead, I wrote a program that would steal passwords of students. My teacher gave me an A</a></summary><br>
+
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/0yjz3yVM/image.png' border='0' alt='image'/></a>
+
+- Compile this way: `gcc -Wall -pedantic -Werror -Wextra -std=gnu89 102-fibonacci.c -o 102-fibonacci`
+
+</details>
+
+<details>
+<summary><a href="./103-fibonacci.c">15. Even Liber Abbaci</a></summary><br>
+
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/8kmtkJ1b/image.png' border='0' alt='image'/></a>
+
+- Compile this way: `gcc -Wall -pedantic -Werror -Wextra -std=gnu89 103-fibonacci.c -o 103-fibonacci`
+
+</details>
+
+<details>
+<summary><a href="./104-fibonacci.c">16. In computer class, the first assignment was to write a program to print the first 100 Fibonacci numbers. Instead, I wrote a program that would steal passwords of students. My teacher gave me an A+</a></summary><br>
+
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/d1Cq75Gk/image.png' border='0' alt='image'/></a>
+
+- Compile this way: `gcc -Wall -pedantic -Werror -Wextra -std=gnu89 104-fibonacci.c -o 104-fibonacci`
+
+</details>
