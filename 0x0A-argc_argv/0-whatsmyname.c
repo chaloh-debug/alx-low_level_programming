@@ -2,9 +2,9 @@
 
 /**
  * main - prints its name, followed by a new line.
- * @argc: counter
- * @argv: command arguments
- * return: 0
+ * @argc: count.
+ * @argv: argumens.
+ * Return: 0
  */
 
 int main(int argc __attribute__((unused)), char *argv[])
