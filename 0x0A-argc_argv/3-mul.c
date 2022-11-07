@@ -1,13 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 /**
  * main - multiplies two numbers.
  * argc: count
  * argv: argument
- * Return: mul
+ * Return: 0
  */
-
 int main(int argc, char *argv[])
 {
 	if (argc != 3)
