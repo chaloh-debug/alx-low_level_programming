@@ -2,8 +2,8 @@
 #include <stdlib.h>
 /**
  * main - multiplies two numbers.
- * argc: count
- * argv: argument
+ * @argc: count.
+ * @argv: arguments.
  * Return: 0
  */
 int main(int argc, char *argv[])
