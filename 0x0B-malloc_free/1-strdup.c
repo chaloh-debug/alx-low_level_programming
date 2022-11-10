@@ -13,7 +13,7 @@
 char *_strdup(char *str)
 {
 	unsigned int  i, j;
-	char ptr;
+	char *ptr;
 
 	if (str  == 0)
 		return (NULL);
@@ -21,12 +21,12 @@ char *_strdup(char *str)
 	for (j = 0; str[j] != '\0'; j++)
 		continue;
 
-	*ptr = (char*)malloc(sizeof(str));
+	ptr = (char*)malloc(sizeof(str));
 
 	if (ptr == 0)
 		return (NULL);
 
 	for (i = 0; i < j; i++)
-		copy[i] = str[i];
+		ptr[i] = str[i];
 	return (ptr);
 }
