@@ -15,13 +15,22 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	unsigned int i, j, k, l;
 	char *conct;
 
+	if (s1 == NULL)
+		s1 = "";
+
+	if (s2 == NULL)
+		s2 = "";
+
 	for (i = 0; s1[i] != '\0'; i++)
 		;
 
 	for (j = 0; s2[j] != '\0'; j++)
 		;
 
-	conct = (char *)malloc(sizeof(char) * (i + j + 1));
+	if (n >= s2)
+		n = s2;
+
+	conct = malloc(i + n + 1);
 
 	for (k = 0; k <= i; k++)
 	{
