@@ -29,20 +29,18 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 	if (n > s2)
 		n = s2;
-	out = i + n + 1;
 
-	conct = malloc(out);
+	out = i + n;
 
-	if (conct == NULL)
-		return (NULL);
+	conct = malloc(out + 1);
 
-	for (k = 0; k <= out; k++)
+	if (k = 0; k < i; k++)
 	{
-		if (k < i)
-			conct[k] = s1[k];
-		else
-			conct[k] = s2[k - 1];
+		conct[k] = s1[k];
 	}
+	if (l = 0; l < n; k++,l++)
+	{
+		conct[k] = s2[l];
 
 	return (conct);
 }
