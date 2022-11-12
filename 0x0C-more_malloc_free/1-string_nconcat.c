@@ -40,7 +40,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	}
 
 	k = i;
-	for (l = 0; l <= n; k++, l++)
+	for (l = 0; l < n; k++, l++)
 	{
 		conct[k] = s2[l];
 	}
