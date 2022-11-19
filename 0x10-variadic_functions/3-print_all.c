@@ -9,13 +9,14 @@
 void print_all(const char * const format, ...)
 {
 	va_list args;
-	unsigned int i = 0, j = 0, k = 0;
+	unsigned int i = 0, j, k = 0;
 	char *str;
 	const char formats[] = "ch, in, fl, st";
 
 	va_start(args, format);
 	while (format && format[i])
 	{
+		j = 0;
 		while (formats[j])
 		{
 			if (format[i] == formats[j] && k)
