@@ -29,9 +29,9 @@ int exponential_search(int *array, size_t size, int value)
 /**
  * binary_search_ex - binary search alg
  * @array: pointer to array
+ * @value: value to search in the array
  * @first: first value of the array
  * @last: last value of the array
- * @value: value to search in the array
  * Return: index
  */
 int binary_search_ex(int *array, int value, int first, int last)
